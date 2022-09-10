@@ -1,10 +1,11 @@
 import express from 'express'
 
-import { signUp } from '../controllers/userController'
-import { validateSignUpReqBody } from '../middlewares/userMiddleware'
+import { signUp, SignIn } from '../controllers/userController'
+import { validateAuthReqBody } from '../middlewares/userMiddleware'
 
 const userRouter = express.Router()
 
-userRouter.post('/signup', validateSignUpReqBody, signUp)
+userRouter.post('/signup', validateAuthReqBody, signUp)
+userRouter.post('/signin', validateAuthReqBody, signIn)
 
 export default userRouter
