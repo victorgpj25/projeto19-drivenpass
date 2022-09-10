@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { signUp, SignIn } from '../controllers/userController'
+import { signUp, signIn } from '../controllers/userController'
 import { validateAuthReqBody } from '../middlewares/userMiddleware'
 
 const userRouter = express.Router()
