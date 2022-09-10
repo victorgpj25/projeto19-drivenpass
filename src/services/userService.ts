@@ -9,3 +9,10 @@ export async function signUp(email: string, password: string) {
 
     await userRepository.insert({email, password: encryptedPassword})
 }
+
+export async function signIn(email: string, password: string) {
+    const userId = await userUtils.validateSignIn(email, password)
+    const token = await encryptUtils.generateUserToken(Number(userId))
+
+    return token
+}
