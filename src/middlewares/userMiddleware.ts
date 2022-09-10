@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express'
 
-import { signUpSchema } from '../schemas/userSchema'
+import { authSchema } from '../schemas/userSchema'
 
-export function validateSignUpReqBody(req: Request, res: Response, next: NextFunction) {
-    const validation = signUpSchema.validate(req.body)
+export function validateAuthReqBody(req: Request, res: Response, next: NextFunction) {
+    const validation = authSchema.validate(req.body)
     if (validation.error) {
-        res.status(422).send({ErrorMessage: 'Sign-Up failed due to ' + validation.error})
+        res.status(422).send({ErrorMessage: 'Authentication failed due to ' + validation.error})
         return
     }
 

@@ -1,6 +1,6 @@
 import joi from 'joi'
 
-const signUpSchema = joi.object({
+const authSchema = joi.object({
     email: joi.string().email().required()
         .messages({
             'any.required': 'Email is a required field',
@@ -17,4 +17,4 @@ const signUpSchema = joi.object({
     )
 })
 
-export { signUpSchema }
+export { authSchema }
