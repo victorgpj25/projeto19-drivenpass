@@ -5,6 +5,6 @@ import { validateSignUpReqBody } from '../middlewares/userMiddleware'
 
 const userRouter = express.Router()
 
-userRouter.post("/signup", validateSignUpReqBody, signUp)
+userRouter.post('/signup', validateSignUpReqBody, signUp)
 
 export default userRouter
