@@ -21,7 +21,7 @@ export async function getNotes(req: Request, res: Response) {
 export async function getNotesById(req: Request, res: Response) {
     const userId = Number(res.locals.userId)
     const id = Number(req.params.id)
-    const note = await noteService.getNotesById(userId, id)
+    const note = await noteService.getNoteById(userId, id)
 
     res.status(200).send(note)
 }

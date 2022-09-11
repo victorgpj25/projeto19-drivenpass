@@ -13,7 +13,7 @@ export async function getNotes(userId: number) {
     return notes
 }
 
-export async function getnotesById(userId: number, noteId: number) {
+export async function getNoteById(userId: number, noteId: number) {
     const note = await noteRepository.findByNoteId(userId, noteId)
     if (!note) throw {code: 'search_failed', message: 'Given id does not exist or belongs to another user'}
     return note

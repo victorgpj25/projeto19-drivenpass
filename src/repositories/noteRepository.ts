@@ -18,3 +18,22 @@ export async function findByTagAndUserId(userId: number, tag: string) {
 
     return note
 }
+
+export async function findByUserId(userId: number) {
+    const notes: noteTypes.INote[] | null = await prisma.notes.findMany({
+        where: {
+            userId
+        }
+    })
+    return notes
+}
+
+export async function findByNoteId(userId: number, noteId: number) {
+    const note: noteTypes.INote | null = await prisma.notes.findFirst({
+        where: {
+            id: noteId,
+            userId
+        }
+    })
+    return note
+}
