@@ -15,6 +15,6 @@ const noteRouter = express.Router()
 noteRouter.post('/notes', verifyToken, validatePostNoteReqBody, insertNote)
 noteRouter.get('/notes', verifyToken, getNotes)
 noteRouter.get('/notes/:id', verifyToken, validateReqParamsId, getNotesById)
-noteRouter.delete('/notes/:id', verifyToken, deleteNote)
+noteRouter.delete('/notes/:id', verifyToken, validateReqParamsId, deleteNote)
 
 export default noteRouter

@@ -15,6 +15,6 @@ const credentialRouter = express.Router()
 credentialRouter.post('/credentials', verifyToken, validateInsertCredentialReqBody, insertCredential)
 credentialRouter.get('/credentials', verifyToken, getCredentials)
 credentialRouter.get('/credentials/:id', verifyToken, validateReqParamsId, getCredentialsById)
-credentialRouter.delete('/credentials/:id', verifyToken, deleteCredentials)
+credentialRouter.delete('/credentials/:id', verifyToken, validateReqParamsId, deleteCredentials)
 
 export default credentialRouter
