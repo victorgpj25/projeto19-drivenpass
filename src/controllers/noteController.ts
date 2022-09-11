@@ -10,3 +10,18 @@ export async function insertNote(req: Request, res: Response) {
 
     res.sendStatus(201)
 }
+
+export async function getNotes(req: Request, res: Response) {
+    const userId = Number(res.locals.userId)
+    const notes = await noteService.getNotes(userId)
+
+    res.status(200).send(notes)
+}
+
+export async function getNotesById(req: Request, res: Response) {
+    const userId = Number(res.locals.userId)
+    const id = Number(req.params.id)
+    const note = await noteService.getNotesById(userId, id)
+
+    res.status(200).send(note)
+}
