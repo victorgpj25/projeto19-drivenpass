@@ -1,7 +1,7 @@
-export interface User {
+export interface IUser {
     id: number
     email: string
     password: string
 }
 
-export type userInsertData = Omit<User, 'id'>
+export type IuserInsertData = Omit<IUser, 'id'>
