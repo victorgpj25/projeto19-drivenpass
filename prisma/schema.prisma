@@ -30,7 +30,7 @@ model Cards {
 	id Int @id @default(autoincrement())
   user Users @relation(fields: [userId], references: [id])
   userId Int
-  name String 
+  tag String 
   number String
   owner String
   securityCode String
@@ -40,14 +40,14 @@ model Cards {
   type cardTypes
 
 
- @@unique([userId, name])
+ @@unique([userId, tag])
 }
 
 model Connections {
 	id Int @id @default(autoincrement())
   user Users @relation(fields: [userId], references: [id])
   userId Int
-  name String 
+  tag String 
   network String
   password String
 }
@@ -57,20 +57,20 @@ model Credentials {
 	id Int @id @default(autoincrement())
   user Users @relation(fields: [userId], references: [id])
   userId Int
-  name String 
+  tag String 
   url String
   login String
   password String
 
- @@unique([userId, name])
+ @@unique([userId, tag])
 }
 
 model Notes {
 	id Int @id @default(autoincrement())
   user Users @relation(fields: [userId], references: [id])
   userId Int
-  name String
+  tag String
   note String
 
- @@unique([userId, name])
+ @@unique([userId, tag])
 }
