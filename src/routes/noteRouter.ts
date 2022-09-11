@@ -3,7 +3,8 @@ import express from 'express'
 import { 
     insertNote, 
     getNotes,
-    getNotesById 
+    getNotesById, 
+    deleteNote
 } from '../controllers/noteController'
 import { validatePostNoteReqBody } from '../middlewares/noteMiddleware'
 import { verifyToken } from '../middlewares/authMiddleware'
@@ -14,5 +15,6 @@ const noteRouter = express.Router()
 noteRouter.post('/notes', verifyToken, validatePostNoteReqBody, insertNote)
 noteRouter.get('/notes', verifyToken, getNotes)
 noteRouter.get('/notes/:id', verifyToken, validateReqParamsId, getNotesById)
+noteRouter.delete('/notes/:id', verifyToken, deleteNote)
 
 export default noteRouter
