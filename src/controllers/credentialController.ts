@@ -32,5 +32,5 @@ export async function deleteCredentials(req: Request, res: Response) {
     const id = Number(req.params.id)
     await credentialService.deleteCredentials(userId, id)
 
-    res.status(200)
+    res.sendStatus(200)
 }
