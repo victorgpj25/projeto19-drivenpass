@@ -16,6 +16,9 @@ export default function errorHandler(error: any, req: Request, res: Response, ne
     if (error.code === 'tag_conflict') {
         return res.status(409).send({ErrorMessage: error.message})
     }
+    if (error.code === 'invalid_req_params') {
+        return res.status(422).send({ErrorMessage: error.message})
+    }
     
     res.sendStatus(500)
 }
