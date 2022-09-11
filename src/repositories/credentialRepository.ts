@@ -36,3 +36,11 @@ export async function findByCredentialsId(userId: number, credentialsId: number)
     })
     return credentials
 }
+
+export async function remove(credentialsId: number) {
+    await prisma.credentials.delete({
+        where: {
+            id: credentialsId
+        }
+    })
+}
