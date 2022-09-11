@@ -23,3 +23,9 @@ export async function getCredentialsById(userId: number, credentialsId: number) 
     return decryptedcredentials
 }
 
+export async function deleteCredentials(userId: number, credentialsId: number) {
+    const credentials = await credentialRepository.findByCredentialsId(userId, credentialsId)
+    if (!credentials) throw {code: 'search_failed', message: 'Given id does not exist or belongs to another user'}
+    await credentialRepository.remove(credentialsId)
+}
+
