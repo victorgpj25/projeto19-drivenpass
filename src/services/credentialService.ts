@@ -7,6 +7,6 @@ export async function insertCredential(userId: number, url: string, tag: string,
     await credentialUtils.verifyTagConflict(userId, tag)
     const encryptedPassword = await encryptUtils.encryptData(password)
 
-    await credentialRepository.insert({url, tag, username, password: encryptedPassword})
+    await credentialRepository.insert({userId, url, tag, username, password: encryptedPassword})
 }
 
