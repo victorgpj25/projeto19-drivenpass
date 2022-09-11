@@ -12,12 +12,14 @@ export async function insertCredential(userId: number, url: string, tag: string,
 
 export async function getCredentials(userId: number) {
     const credentials = await credentialRepository.findByUserId(userId)
-    return credentials
+    const decryptedcredentials = credentialUtils.returnDecryptedCredentialsInArray(credentials)
+    return decryptedcredentials
 }
 
 export async function getCredentialsById(userId: number, credentialsId: number) {
     const credentials = await credentialRepository.findByCredentialsId(userId, credentialsId)
     if (!credentials) throw {code: 'search_failed', message: 'Given id does not exist or belongs to another user'}
-    return credentials
+    const decryptedcredentials = credentialUtils.returnDecryptedCredentials(credentials)
+    return decryptedcredentials
 }
 

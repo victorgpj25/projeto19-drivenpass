@@ -13,6 +13,10 @@ export async function encryptData(encryptThis: string) {
     return cryptr.encrypt(encryptThis)
 }
 
+export async function decryptData(decryptThis: string) {
+    return cryptr.decrypt(decryptThis)
+}
+
 
 export async function generateUserToken(userId: number) {
     return jwt.sign({ userId }, jwtKey, { expiresIn: 86400 }); // token expires in 24 hours

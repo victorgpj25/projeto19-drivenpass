@@ -17,3 +17,22 @@ export async function findByTagAndUserId(userId: number, tag: string) {
     })
     return credential
 }
+
+export async function findByUserId(userId: number) {
+    const credentials: credentialTypes.ICredential[] | null = await prisma.credentials.findMany({
+        where: {
+            userId
+        }
+    })
+    return credentials
+}
+
+export async function findByCredentialsId(userId: number, credentialsId: number) {
+    const credentials: credentialTypes.ICredential | null = await prisma.credentials.findFirst({
+        where: {
+            id: credentialsId,
+            userId
+        }
+    })
+    return credentials
+}
