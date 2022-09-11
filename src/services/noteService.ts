@@ -18,3 +18,9 @@ export async function getNoteById(userId: number, noteId: number) {
     if (!note) throw {code: 'search_failed', message: 'Given id does not exist or belongs to another user'}
     return note
 }
+
+export async function deleteNote(userId: number, noteId: number) {
+    const note = await noteRepository.findByNoteId(userId, noteId)
+    if (!note) throw {code: 'search_failed', message: 'Given id does not exist or belongs to another user'}
+    await noteRepository.remove(noteId)
+}
