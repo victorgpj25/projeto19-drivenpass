@@ -10,3 +10,18 @@ export async function insertCredential(req: Request, res: Response) {
 
     res.sendStatus(201)
 }
+
+export async function getCredentials(req: Request, res: Response) {
+    const userId = Number(res.locals.userId)
+    const credentials = await credentialService.getCredentials(userId)
+
+    res.status(200).send(credentials)
+}
+
+export async function getCredentialsById(req: Request, res: Response) {
+    const userId = Number(res.locals.userId)
+    const { id } = req.params
+    const credentials = await credentialService.getCredentialsById(userId, id)
+
+    res.status(200).send(credentials)
+}
