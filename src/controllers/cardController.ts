@@ -2,6 +2,8 @@ import { Request, Response } from 'express'
 
 import * as cardService from '../services/cardService'
 
+import * as cardTypes from '../types/cardTypes'
+
 export async function insertCard(req: Request, res: Response) {
     const userId = Number(res.locals.userId)
     const { tag, number, owner, securityCode, expirationDate, password, isVirtual, type }: 
@@ -13,10 +15,10 @@ export async function insertCard(req: Request, res: Response) {
         expirationDate: string, 
         password: string | number, 
         isVirtual: boolean, 
-        type: string 
+        type: cardTypes.cardTypes
     } = req.body
 
-    await cardService.insertCard(tag, String(number), owner, String(securityCode), expirationDate, String(password), isVirtual, type)
+    await cardService.insertCard(userId, tag, String(number), owner, String(securityCode), expirationDate, String(password), isVirtual, type)
 
     res.sendStatus(201)
 }

@@ -1,3 +1,9 @@
+export type cardTypes =
+  | 'credit'
+  | 'debit'
+  | 'both'
+
+
 export interface ICard {
     id: number
     userId: number
@@ -8,7 +14,7 @@ export interface ICard {
     expirationDate: string 
     password: string 
     isVirtual: boolean
-    type: string 
+    type: cardTypes
 }
 
 export type ICardInsertData = Omit<ICard, 'id'>

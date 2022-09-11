@@ -1,9 +1,10 @@
 import * as cardRepository from '../repositories/cardRepository'
 
-import * as cardUtils from "../utils/cardUtils"
+import * as cardUtils from '../utils/cardUtils'
 import * as encryptUtils from '../utils/encryptUtils'
+import * as cardTypes from '../types/cardTypes'
 
-export async function insertCard(userId: number, tag: string, number: string, owner: string, securityCode: string, expirationDate: string, password: string, isVirtual: boolean, type: string) {
+export async function insertCard(userId: number, tag: string, number: string, owner: string, securityCode: string, expirationDate: string, password: string, isVirtual: boolean, type: cardTypes.cardTypes) {
     await cardUtils.verifyTagConflict(userId, tag)
     const encryptedPassword = await encryptUtils.encryptData(password)
     const encryptedSecurityCode = await encryptUtils.encryptData(securityCode)
