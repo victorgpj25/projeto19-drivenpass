@@ -9,6 +9,11 @@ export async function encryptUserPassword(password: string) {
     return bcrypt.hash(password, 10)
 }
 
+export async function encryptData(encryptThis: string) {
+    return cryptr.encrypt(encryptThis)
+}
+
+
 export async function generateUserToken(userId: number) {
     return jwt.sign({ userId }, jwtKey, { expiresIn: 86400 }); // token expires in 24 hours
 }

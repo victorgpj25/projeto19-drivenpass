@@ -59,7 +59,7 @@ model Credentials {
   userId Int
   tag String 
   url String
-  login String
+  username String
   password String
 
  @@unique([userId, tag])
